@@ -1,11 +1,12 @@
 package com.ukec.game.sprites;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
 
 public class Box  {
 
-    public static final Float GRAVITY = -9.81f;
+    public static final Float GRAVITY = -4.905f;
     public static boolean onGround;
 
     private Vector3 position, velosity;
@@ -19,20 +20,23 @@ public class Box  {
     }
 
     private Texture box;
+    private Float width;
+    private Integer startY;
 
     public Box(int x, int y, float width){
         position = new Vector3(x, y, 0);
         velosity = new Vector3(0, 0, 0);
         box = new Texture("sprites/box/box_st.png");
         onGround = false;
-
+        this.width = width;
+        startY = y;
     }
 
     public Vector3 getPosition() {
         return position;
     }
 
-    public Texture getPlayer() {
+    public Texture getBox() {
         return box;
     }
 
@@ -49,7 +53,9 @@ public class Box  {
 
             velosity.scl(1 / dt);
         }else{
-            box.dispose();
+            position.x = MathUtils.random(0, width-box.getWidth());
+            position.y = startY;
+            velosity.y = 0;
         }
     }
 
