@@ -19,6 +19,7 @@ public class PlayState extends State {
     private Player player;
     private Blocks_1 blocks;
     private Box firstBox;
+    private Texture bg;
 
     private Long startTime = TimeUtils.millis();
     private boolean damaged;
@@ -32,6 +33,7 @@ public class PlayState extends State {
         blocks = new Blocks_1(0, 0);
         firstBox = new Box(MathUtils.random(0, MyGame.WIDTH), MyGame.HEIGHT, MyGame.WIDTH);
         bf = new BitmapFont();
+        bg = new Texture("menu/night.png");
     }
 
     @Override
@@ -58,6 +60,7 @@ public class PlayState extends State {
         sb.setProjectionMatrix(camera.combined);
 
         sb.begin();
+        sb.draw(bg,0,0, MyGame.WIDTH, MyGame.HEIGHT);
         bf.draw(sb, strHp, 10, 460);
         sb.draw(player.getPlayer(), player.getPosition().x, player.getPosition().y);
         sb.draw(blocks.getBlock(), blocks.getPosition().x, blocks.getPosition().y);
