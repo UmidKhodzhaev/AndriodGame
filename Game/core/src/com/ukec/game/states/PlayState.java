@@ -33,7 +33,7 @@ public class PlayState extends State {
         blocks = new Blocks_1(0, 0);
         firstBox = new Box(MathUtils.random(0, MyGame.WIDTH), MyGame.HEIGHT, MyGame.WIDTH);
         bf = new BitmapFont();
-        bg = new Texture("menu/night.png");
+        bg = new Texture("night.png");
     }
 
     @Override
