@@ -4,6 +4,7 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.ukec.game.states.GameStateManager;
 import com.ukec.game.states.MenuState;
@@ -18,6 +19,7 @@ public class MyGame extends ApplicationAdapter {
 
 	private GameStateManager gsm;
 	private SpriteBatch batch;
+	private BitmapFont font;
 	
 	@Override
 	public void create () {

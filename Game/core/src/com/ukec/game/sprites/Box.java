@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Vector3;
 public class Box  {
 
     public static final Float GRAVITY = -4.905f;
-    public static boolean onGround;
+    public  boolean onGround;
 
     private Vector3 position, velosity;
 
@@ -40,8 +40,8 @@ public class Box  {
         return box;
     }
 
-    public static void setOnGround(boolean onGround) {
-        Box.onGround = onGround;
+    public void setOnGround(boolean onGround) {
+        this.onGround = onGround;
     }
 
     public void update(float dt) {
@@ -57,6 +57,17 @@ public class Box  {
             position.y = startY;
             velosity.y = 0;
         }
+    }
+
+    public boolean checkCollide(Vector3 objPos, Texture objTexture ){
+        boolean collided = false;
+        if (position.y <= objPos.y + objTexture.getHeight()){
+            if (position.x >= objPos.x && position.x <= objPos.x + objTexture.getWidth()){
+                collided = true;
+            }
+        }
+
+        return collided;
     }
 
 }

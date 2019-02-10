@@ -12,6 +12,7 @@ public class Player {
 
     private float width;
 
+    private Integer hp;
     private Vector3 position, velosity;
 
     public static Float getGRAVITY() {
@@ -24,21 +25,32 @@ public class Player {
 
     private Texture player;
 
+    private Texture heart;
     public Player(int x, int y, float width){
         position = new Vector3(x, y, 0);
         velosity = new Vector3(0, 0, 0);
         player = new Texture("player/hero.png");
         this.width = width;
         onGround = false;
-
+        hp = 3;
+        heart = new Texture("player/heart.png");
     }
 
     public Vector3 getPosition() {
         return position;
     }
 
+    public Integer getHp() {
+        return hp;
+    }
+
     public Texture getPlayer() {
         return player;
+    }
+
+    public Texture getHeart()
+    {
+        return heart;
     }
 
     public static void setOnGround(boolean onGround) {
@@ -59,22 +71,12 @@ public class Player {
             velosity.x = speed;
             velosity.scl(dt);
 
-            byte direction;
-            if(Gdx.input.getX() <= width/2) direction =-1;
-            else direction = 1;
-/// teleport start
-            if (position.x < 0) {
-
-                position.x = width;
-
+            byte direction = 0;
+            if(Gdx.input.getX() < position.x + player.getWidth()/2) direction =-1;
+            else if(Gdx.input.getX() > position.x + player.getWidth()/2){
+                direction = 1;
             }
 
-            if (position.x > width) {
-
-                position.x = 0;
-
-            }
-/// teleport end
 /// changing position player
             position.add(velosity.x * direction, 0, 0);
 
@@ -82,5 +84,14 @@ public class Player {
         }
 
     }
+
+    public void setDamage(boolean dmg){
+        if (dmg){
+            hp -= 1;
+            dmg = false;
+        }
+    }
+
+
 
 }
