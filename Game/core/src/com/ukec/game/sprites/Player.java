@@ -62,7 +62,7 @@ public class Player {
         if (!onGround) {
             velosity.add(0, GRAVITY, 0);
             velosity.scl(dt);
-            position.add(0, velosity.y, 0);
+            position.add(velosity.x, velosity.y, 0);
 
             velosity.scl(1 / dt);
         }
@@ -72,10 +72,17 @@ public class Player {
             velosity.scl(dt);
 
             byte direction = 0;
-            if(Gdx.input.getX() < position.x + player.getWidth()/2) direction =-1;
-            else if(Gdx.input.getX() > position.x + player.getWidth()/2){
-                direction = 1;
+            if (position.x >= 0) {
+                if(Gdx.input.getX() <= position.x + player.getWidth()/2){
+                    direction =-1;
+                }
             }
+            if (position.x <= width - player.getWidth()){
+                if(Gdx.input.getX() >= position.x + player.getWidth()/2){
+                    direction = 1;
+                }
+            }
+
 
 /// changing position player
             position.add(velosity.x * direction, 0, 0);

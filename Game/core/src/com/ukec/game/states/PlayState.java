@@ -31,7 +31,7 @@ public class PlayState extends State {
         player = new Player(1, 240, MyGame.WIDTH);
         blocks = new Blocks_1(0, 0);
         firstBox = new Box(MathUtils.random(0, MyGame.WIDTH), MyGame.HEIGHT, MyGame.WIDTH);
-        bf =  new BitmapFont();
+        bf = new BitmapFont();
     }
 
     @Override
@@ -44,7 +44,7 @@ public class PlayState extends State {
         player.setOnGround(checkPlayer());
         firstBox.setOnGround(checkBox(firstBox));
         player.setDamage(damaged);
-        if (player.getHp() <= 0){
+        if (player.getHp() <= 0) {
             gsm.set(new MenuState(gsm));
         }
         player.update(dt);
@@ -72,24 +72,24 @@ public class PlayState extends State {
 
     }
 
-    private boolean checkPlayer(){
+    private boolean checkPlayer() {
         boolean onGround = false;
-            if(player.getPosition().y <= blocks.getBlock().getHeight()){
-                onGround = true;
-                Vector3 position = new Vector3(player.getPosition().x, (blocks.getPosition().y + 96), 0);
-                player.setPosition(position);
-            }
+        if (player.getPosition().y <= blocks.getBlock().getHeight()) {
+            onGround = true;
+            Vector3 position = new Vector3(player.getPosition().x, (blocks.getPosition().y + 96), 0);
+            player.setPosition(position);
+        }
         return onGround;
     }
 
-    private boolean checkBox(Box box){
+    private boolean checkBox(Box box) {
         boolean collided = false;
 
-        if(box.checkCollide(blocks.getPosition(), blocks.getBlock())){
+        if (box.checkCollide(blocks.getPosition(), blocks.getBlock())) {
             collided = true;
         }
 
-        if (box.checkCollide(player.getPosition(), player.getPlayer())){
+        if (box.checkCollide(player.getPosition(), player.getPlayer())) {
             collided = true;
             Vector3 position = new Vector3(box.getPosition().x, (blocks.getPosition().y + 96), 0);
             box.setPosition(position);
@@ -98,13 +98,13 @@ public class PlayState extends State {
         return collided;
     }
 
-    private void boxes(float dt){
+    private void boxes(float dt) {
         firstBox.update(dt);
     }
 
-    private void hpDraw(SpriteBatch sb){
+    private void hpDraw(SpriteBatch sb) {
         for (int i = 0; i < player.getHp(); i++) {
-            int x = player.getHeart().getWidth() * 3/2;
+            int x = player.getHeart().getWidth() * 3 / 2;
             int y = MyGame.HEIGHT - player.getHeart().getHeight() * 3;
             sb.draw(player.getHeart(), x * i, y);
         }
