@@ -92,11 +92,12 @@ public class Player {
 
     }
 
-    public void setDamage(boolean dmg){
+    public boolean setDamage(boolean dmg){
         if (dmg){
             hp -= 1;
             dmg = false;
         }
+        return dmg;
     }
 
 

@@ -45,7 +45,7 @@ public class PlayState extends State {
     public void update(float dt) {
         player.setOnGround(checkPlayer());
         firstBox.setOnGround(checkBox(firstBox));
-        player.setDamage(damaged);
+        damaged = player.setDamage(damaged);
         if (player.getHp() <= 0) {
             gsm.set(new MenuState(gsm));
         }
