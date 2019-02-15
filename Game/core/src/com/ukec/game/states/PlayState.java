@@ -93,9 +93,9 @@ public class PlayState extends State {
         }
 
         if (box.checkCollide(player.getPosition(), player.getPlayer())) {
-            collided = true;
             Vector3 position = new Vector3(box.getPosition().x, (blocks.getPosition().y + 96), 0);
             box.setPosition(position);
+            collided = true;
             this.damaged = true;
         }
         return collided;
