@@ -62,7 +62,7 @@ public class Box  {
     public boolean checkCollide(Vector3 objPos, Texture objTexture ){
         boolean collided = false;
         if (position.y <= objPos.y + objTexture.getHeight()){
-            if ((position.x >= objPos.x && position.x <= objPos.x + objTexture.getWidth()) || position.x + box.getWidth()>= objPos.x && position.x + box.getWidth() <= objPos.x + objTexture.getWidth()){
+            if ((position.x >= objPos.x && position.x <= objPos.x + objTexture.getWidth()) || (position.x + box.getWidth()>= objPos.x && position.x + box.getWidth() <= objPos.x + objTexture.getWidth())){
                 collided = true;
             }
         }
