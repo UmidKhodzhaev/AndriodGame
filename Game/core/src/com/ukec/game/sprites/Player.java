@@ -30,12 +30,12 @@ public class Player {
     public Player(int x, int y, float width){
         position = new Vector3(x, y, 0);
         velosity = new Vector3(0, 0, 0);
-        player = new Texture("player/0.png");
+        player = new Texture("player/zero.png");
         this.width = width;
         onGround = false;
         hp = 3;
         heart = new Texture("player/heart.png");
-        direction = 1;
+        direction = 0;
 
     }
 
@@ -86,8 +86,12 @@ public class Player {
 
 
 /// changing position player
-            position.add(velosity.x * direction, 0, 0);
-
+            if (position.x <= width && position.x >= 0) {
+                position.add(velosity.x * direction, 0, 0);
+            }else{
+                if(position.x < width/2)position.x+=5;
+                else position.x -=5;
+            }
             velosity.scl(1/dt);
         }
 

@@ -29,7 +29,7 @@ public class PlayState extends State {
     public PlayState(GameStateManager gsm) {
         super(gsm);
         camera.setToOrtho(false, MyGame.WIDTH, MyGame.HEIGHT);
-        player = new Player(1, 240, MyGame.WIDTH);
+        player = new Player(100, 240, MyGame.WIDTH);
         blocks = new Blocks_1(0, 0);
         firstBox = new Box(MathUtils.random(0, MyGame.WIDTH), MyGame.HEIGHT, MyGame.WIDTH);
         bf = new BitmapFont();
