@@ -62,7 +62,7 @@ public class PlayState extends State {
         sb.begin();
         sb.draw(bg,0,0, MyGame.WIDTH, MyGame.HEIGHT);
         bf.draw(sb, strHp, 10, 460);
-        sb.draw(player.getPlayer(), player.getPosition().x, player.getPosition().y);
+        sb.draw(player.getPlayer(), player.getPosition().x, player.getPosition().y, 64 * (-player.direction), 64);
         sb.draw(blocks.getBlock(), blocks.getPosition().x, blocks.getPosition().y);
         hpDraw(sb);
         sb.draw(firstBox.getBox(), firstBox.getPosition().x, firstBox.getPosition().y);

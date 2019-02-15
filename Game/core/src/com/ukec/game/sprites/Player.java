@@ -9,6 +9,7 @@ public class Player {
     public static final Float GRAVITY = -9.81f;
     public static  Float speed = 250f;
     public static boolean onGround;
+    public byte direction;
 
     private float width;
 
@@ -29,11 +30,13 @@ public class Player {
     public Player(int x, int y, float width){
         position = new Vector3(x, y, 0);
         velosity = new Vector3(0, 0, 0);
-        player = new Texture("player/hero.png");
+        player = new Texture("player/0.png");
         this.width = width;
         onGround = false;
         hp = 3;
         heart = new Texture("player/heart.png");
+        direction = 1;
+
     }
 
     public Vector3 getPosition() {
@@ -70,15 +73,13 @@ public class Player {
         if(Gdx.input.isTouched()){
             velosity.x = speed;
             velosity.scl(dt);
-
-            byte direction = 0;
             if (position.x >= 0) {
-                if(Gdx.input.getX() <= position.x + player.getWidth()/2){
+                if(Gdx.input.getX() <= position.x){
                     direction =-1;
                 }
             }
             if (position.x <= width - player.getWidth()){
-                if(Gdx.input.getX() >= position.x + player.getWidth()/2){
+                if(Gdx.input.getX() >= position.x + player.getWidth()){
                     direction = 1;
                 }
             }
